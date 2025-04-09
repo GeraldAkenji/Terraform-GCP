@@ -19,3 +19,9 @@ resource "google_storage_bucket_object" "static_site_src" {
   source = "../website/index.html"
   bucket = google_storage_bucket.website.name
 }
+
+# Reserve an external IP
+resource "google_compute_global_address" "website" {
+  provider = google
+  name     = "website-lb-ip"
+}
